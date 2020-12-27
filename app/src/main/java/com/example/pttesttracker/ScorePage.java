@@ -82,8 +82,21 @@ public class ScorePage extends Fragment {
 
         }
         if (failure){
-            failureOrPass.setText("Failure");
+            /**
+             * TODO: Center the text and make a better error message
+             */
+            String failureMessage = "Failure\n";
+            if (pushUpScore == 0){
+                failureMessage += "Pushups failed with a count of " + pushUps + "\n";
+            }
+            if (sitUpScore == 0){
+                failureMessage += "Situps failed with a count of " + sitUps + "\n";
+            }
+            if (runScore == 0){
+                failureMessage += "Run failed with a time of " + runTime + "\n";
+            }
             failureOrPass.setTextColor(Color.rgb(255,0,0));
+            failureOrPass.setText(failureMessage);
         } else {
             failureOrPass.setText("Pass");
             failureOrPass.setTextColor(Color.rgb(0,255,0));
