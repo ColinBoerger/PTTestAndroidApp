@@ -48,7 +48,9 @@ public class DataEntryPage extends Fragment {
         view.findViewById(R.id.button_settings).setOnClickListener(new View.OnClickListener() {
                                                                     @Override
                                                                     public void onClick(View view) {
-
+                                                                        Bundle args = new Bundle();
+                                                                        NavHostFragment.findNavController(DataEntryPage.this)
+                                                                                .navigate(R.id.action_FirstFragment_to_settingsFragment, args);
                                                                     }
                                                                 });
         /**
