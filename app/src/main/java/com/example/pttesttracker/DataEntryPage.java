@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +21,7 @@ import java.util.List;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
-public class FirstFragment extends Fragment {
+public class DataEntryPage extends Fragment {
 
     @Override
     public View onCreateView(
@@ -31,7 +29,7 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.data_entry_page, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -144,7 +142,7 @@ public class FirstFragment extends Fragment {
 
                 args.putString("waistMeasurement", waistStr);
 
-                NavHostFragment.findNavController(FirstFragment.this)
+                NavHostFragment.findNavController(DataEntryPage.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
             }
         });

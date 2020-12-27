@@ -1,17 +1,11 @@
 package com.example.pttesttracker;
-import android.content.Context;
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,17 +15,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Date;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SecondFragment extends Fragment {
+public class ScorePage extends Fragment {
 
     @Override
     public View onCreateView(
@@ -39,13 +30,13 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+        return inflater.inflate(R.layout.score_page, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Integer i = getArguments().getInt("someInt");
-        Log.d("FUCKBUNDLES", String.valueOf(i));
+
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -78,6 +69,8 @@ public class SecondFragment extends Fragment {
         Double waistScore = calculateWaistScore(waistMeasurement);
 
         TextView score = view.findViewById(R.id.textview_second);
+
+        TextView failureOrPass = view.findViewById(R.id.textView_fail_or_pass);
         /*
         Create the stuff to calculate the score now
 
@@ -86,6 +79,14 @@ public class SecondFragment extends Fragment {
 
         if (totalScore < 75.0 || pushUpScore == 0 || sitUpScore == 0 || runScore == 0 || waistScore == 0){
             failure = true;
+
+        }
+        if (failure){
+            failureOrPass.setText("Failure");
+            failureOrPass.setTextColor(Color.rgb(255,0,0));
+        } else {
+            failureOrPass.setText("Pass");
+            failureOrPass.setTextColor(Color.rgb(0,255,0));
         }
 //        AsyncTask.execute(new Runnable() {
 //            @Override
@@ -100,10 +101,11 @@ public class SecondFragment extends Fragment {
         TODO: Make a block that changes a word from pass to fail ect. Also Include colors
 
          */
+
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
+                NavHostFragment.findNavController(ScorePage.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
@@ -174,7 +176,7 @@ public class SecondFragment extends Fragment {
                         t3v.setGravity(Gravity.CENTER);
                         tbrow.addView(t3v);
                         Button t4v = new Button(requireContext());
-                        t4v.setText("Filler");
+                        t4v.setText("Delete");
                         t4v.setTextColor(Color.WHITE);
                         t4v.setGravity(Gravity.CENTER);
                         t4v.setOnClickListener(new View.OnClickListener() {
