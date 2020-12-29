@@ -32,6 +32,12 @@ public class DataEntryPage extends Fragment {
         return inflater.inflate(R.layout.data_entry_page, container, false);
     }
 
+    /**
+     * TODO: Add a login page to the application with an option to continue offline
+     * @param view
+     * @param savedInstanceState
+     */
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

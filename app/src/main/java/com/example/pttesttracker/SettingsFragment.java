@@ -10,6 +10,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        /**
+         * TODO: Actually Store the data somewhere and add it to the database
+         */
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
         Preference button = findPreference(getString(R.string.back_button));
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
